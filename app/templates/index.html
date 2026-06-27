@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>SOCket Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<h1>SOCket Dashboard</h1>
+
+<div class="cards">
+
+<div class="card">
+<h3>🚨 Alertes</h3>
+<p>{{ logs|length }}</p>
+</div>
+
+<div class="card">
+<h3>💾 MongoDB</h3>
+<p>🟢 Online</p>
+</div>
+
+<div class="card">
+<h3>🐳 Docker</h3>
+<p>🟢 Running</p>
+</div>
+
+<div class="card">
+<h3>🖥 Flask</h3>
+<p>🟢 Online</p>
+</div>
+
+</div>
+<h2>Derniers événements</h2>
+
+<ul>
+
+{% for log in logs %}
+
+<li>{{ log.event }}</li>
+
+{% endfor %}
+
+</ul>
+
+</body>
+
+</html>
