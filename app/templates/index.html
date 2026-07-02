@@ -3,23 +3,33 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <title>SOCket Dashboard</title>
+<title>SOCket Dashboard</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
 <body>
 
-<h1>SOCket Dashboard</h1>
+<h1>🔒 SOCket Dashboard</h1>
 
 <div class="cards">
 
 <div class="card">
-<h3>🚨 Alertes</h3>
-<p>{{ logs|length }}</p>
+<h3>🔴 HIGH</h3>
+<p>{{ high }}</p>
+</div>
+
+<div class="card">
+<h3>🟡 MEDIUM</h3>
+<p>{{ medium }}</p>
+</div>
+
+<div class="card">
+<h3>🔵 INFO</h3>
+<p>{{ info }}</p>
 </div>
 
 <div class="card">
@@ -27,28 +37,40 @@
 <p>🟢 Online</p>
 </div>
 
-<div class="card">
-<h3>🐳 Docker</h3>
-<p>🟢 Running</p>
 </div>
+<h2>Dernières alertes</h2>
 
-<div class="card">
-<h3>🖥 Flask</h3>
-<p>🟢 Online</p>
-</div>
+<table>
 
-</div>
-<h2>Derniers événements</h2>
+<tr>
 
-<ul>
+<th>Heure</th>
+
+<th>Gravité</th>
+
+<th>Source</th>
+
+<th>Evènement</th>
+
+</tr>
 
 {% for log in logs %}
 
-<li>{{ log.event }}</li>
+<tr>
+
+<td>{{ log.time }}</td>
+
+<td>{{ log.severity }}</td>
+
+<td>{{ log.source }}</td>
+
+<td>{{ log.event }}</td>
+
+</tr>
 
 {% endfor %}
 
-</ul>
+</table>
 
 </body>
 
